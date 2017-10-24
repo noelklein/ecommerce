@@ -4,11 +4,6 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { AuthenticationModule } from '../authentication/authentication.module';
-import { IsAuthenticated } from '../authentication/shared/authentication.guard';
-import { CaptureAuthenticationTokenResolve } from '../authentication/shared/authentication.resolve';
-import { AuthorizationModule } from '../authorization/authorization.module';
-import { HasPermissionsForRoute } from '../authorization/shared/HasPermissionsForRoute.guard';
 import { CheckoutModule } from '../checkout/checkout.module';
 import { cartReducer } from '../shopping/shared/cart/cart.reducers';
 import { productsReducer } from '../shopping/shared/product/product.reducers';
@@ -30,8 +25,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ShoppingModule,
     CheckoutModule,
     BrowserModule,
-    AuthenticationModule,
-    AuthorizationModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot(
       { cart: cartReducer, productList: productsReducer },
@@ -49,14 +42,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         loadChildren() {
           return CheckoutModule;
         },
-        canActivate: [IsAuthenticated, HasPermissionsForRoute],
       },
       {
         path: 'auth',
         component: PageNotFoundComponent,
-        resolve: {
-          captureAuthenticationToken: CaptureAuthenticationTokenResolve,
-        },
       },
       {
         path: '',

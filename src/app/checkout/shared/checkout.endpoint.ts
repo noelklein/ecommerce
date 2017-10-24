@@ -3,7 +3,7 @@ import 'rxjs/add/operator/map';
 import { Order } from './models/order';
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CheckoutEndpoint {

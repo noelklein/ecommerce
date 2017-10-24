@@ -14,7 +14,9 @@
 			</thead>
 			<tbody>
 				<tr *ngFor="let item of items | async">
-					<td><img src="/assets/images/{{item.product.productId | padLeft:'0000'}}.jpg"></td>
+					<td>
+						<img src="/assets/images/{{item.product.productId | padLeft:'0000'}}.jpg">
+					</td>
 					<td>
 						<h4>{{item.product.description | limitChars:50}}</h4>
 					</td>
@@ -23,13 +25,17 @@
 					</td>
 					<td class="text-center">
 						<span class="input-group" style="width: 150px;">
-              <span class="input-group-btn">
-                <button (click)="decrementQuantity(item)" type="button" class="btn btn-info"><span class="glyphicon glyphicon-minus"></span></button>
-						</span>
-						<input [value]="item.qty" type="text" class="text-center form-control">
-						<span class="input-group-btn">
-                <button (click)="incrementQuantity(item)" type="button" class="btn btn-info"><span class="glyphicon glyphicon-plus"></span></button>
-						</span>
+							<span class="input-group-btn">
+								<button (click)="decrementQuantity(item)" type="button" class="btn btn-info">
+									<span class="glyphicon glyphicon-minus"></span>
+								</button>
+							</span>
+							<input [value]="item.qty" type="text" class="text-center form-control">
+							<span class="input-group-btn">
+								<button (click)="incrementQuantity(item)" type="button" class="btn btn-info">
+									<span class="glyphicon glyphicon-plus"></span>
+								</button>
+							</span>
 						</span>
 					</td>
 					<td class="text-center">
@@ -37,8 +43,8 @@
 					</td>
 					<td>
 						<button (click)="removeItem(item)" type="button" class="btn btn-sm btn-danger">
-              <span class="glyphicon glyphicon-trash"></span>
-            </button>
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
 					</td>
 				</tr>
 			</tbody>
@@ -50,12 +56,14 @@
 						</a>
 					</td>
 					<td colspan="3"></td>
-					<td class="text-center"><strong>Total: {{(totalAmount | async) | currency:'USD':true}}</strong></td>
+					<td class="text-center">
+						<strong>Total: {{(totalAmount | async) | currency:'USD':true}}</strong>
+					</td>
 					<td>
-						<a class="btn btn-success" routerLink="/checkout" *secIfAuthorized="['checkout']">
+						<a class="btn btn-success" routerLink="/checkout">
 							Checkout
 							<span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
+						</a>
 					</td>
 				</tr>
 			</tfoot>

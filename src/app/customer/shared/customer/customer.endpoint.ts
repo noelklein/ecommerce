@@ -4,7 +4,7 @@ import { Address } from '../models/address';
 import { Customer } from '../models/customer';
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CustomerEndpoint {

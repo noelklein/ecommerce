@@ -17,20 +17,11 @@
 				<li role="presentation" class="active">
 					<a action="push" routerLink="/">Home</a>
 				</li>
-				<li role="presentation" *secIfAuthorized="['logout']">
-          <a>{{email | async}} <span (click)="logout()">(logout)</span></a>
-				</li>
-				<li role="presentation" *secIfAuthorized="['login']">
-          <a (click)="login()">Login</a>
-				</li>
 				<li role="presentation" *ngIf="hasItemsInCart | async">
 					<a action="push" routerLink="/shopping/cart">
 						<span class="glyphicon glyphicon-shopping-cart"></span>
             <span>{{numberOfItemsInCart | async}} Items / {{totalPriceOfCart | async | currency:'USD':true}} total</span>
 					</a>
-				</li>
-				<li role="presentation" *secIfAuthorized="['checkout']">
-					<a routerLink="/checkout">Checkout</a>
 				</li>
 			</ul>
 		</div>

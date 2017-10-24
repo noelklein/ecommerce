@@ -6,7 +6,7 @@ import { ProductEndpoint } from './product.endpoint';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProductResolve implements Resolve<Product> {
