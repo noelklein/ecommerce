@@ -1,34 +1,28 @@
-import { CustomerModule } from '../customer/customer.module';
-import { ShoppingModule } from '../shopping/shopping.module';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { CheckoutEndpoint } from './shared/checkout.endpoint';
-import { CheckoutService } from './shared/checkout.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
+import { CustomerModule } from '../customer/customer.module';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutEndpoint } from './shared/checkout.endpoint';
+import { CheckoutService } from './shared/checkout.service';
+
 @NgModule({
-  declarations: [
-    CheckoutComponent
-  ],
+  declarations: [CheckoutComponent],
   imports: [
     CommonModule,
     CustomerModule,
-    ShoppingModule,
     HttpModule,
     FormsModule,
     RouterModule.forChild([
       {
         path: '',
-        component: CheckoutComponent
+        component: CheckoutComponent,
       },
-    ])
+    ]),
   ],
-  providers: [
-    CheckoutEndpoint,
-    CheckoutService
-  ]
+  providers: [CheckoutEndpoint, CheckoutService],
 })
-export class CheckoutModule { }
+export class CheckoutModule {}

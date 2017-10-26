@@ -31,7 +31,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
   imports: [
     CommonModule,
     HttpClientModule,
-    EffectsModule.forRoot([ProductsEffects]),
+    EffectsModule.forFeature([ProductsEffects]),
     RouterModule.forChild([
       // routes relative to 'shopping/'
       {
@@ -55,7 +55,6 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     ProductListService,
     ProductResolve,
     ProductsResolve,
-    CartService,
     ProductEndpoint,
   ],
 })

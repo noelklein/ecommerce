@@ -11,7 +11,6 @@ export class NavigationComponent {
   public numberOfItemsInCart: Observable<number>;
   public totalPriceOfCart: Observable<number>;
   public hasItemsInCart: Observable<boolean>;
-  public email: Observable<string>;
 
   constructor(private cartService: CartService) {
     this.numberOfItemsInCart = cartService.getTotalCount();

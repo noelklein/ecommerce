@@ -4,26 +4,17 @@ import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { CheckoutModule } from '../checkout/checkout.module';
 import { cartReducer } from '../shopping/shared/cart/cart.reducers';
+import { CartService } from '../shopping/shared/cart/cart.service';
 import { productsReducer } from '../shopping/shared/product/product.reducers';
 import { INITIAL_STATE } from '../shopping/shared/shopping.state';
-import { ShoppingModule } from '../shopping/shopping.module';
-import { FooterComponent } from './footer/footer.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [
-    LayoutComponent,
-    NavigationComponent,
-    FooterComponent,
-    PageNotFoundComponent,
-  ],
+  declarations: [LayoutComponent, NavigationComponent, PageNotFoundComponent],
   imports: [
-    ShoppingModule,
-    CheckoutModule,
     BrowserModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot(
@@ -33,19 +24,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     RouterModule.forRoot([
       {
         path: 'shopping',
-        loadChildren() {
-          return ShoppingModule;
-        },
+        loadChildren: 'app/shopping/shopping.module#ShoppingModule',
       },
       {
         path: 'checkout',
-        loadChildren() {
-          return CheckoutModule;
-        },
-      },
-      {
-        path: 'auth',
-        component: PageNotFoundComponent,
+        loadChildren: 'app/checkout/checkout.module#CheckoutModule',
       },
       {
         path: '',
@@ -56,5 +39,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ]),
   ],
   bootstrap: [LayoutComponent],
+  providers: [CartService],
 })
 export class MainModule {}

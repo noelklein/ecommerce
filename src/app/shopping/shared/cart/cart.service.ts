@@ -1,36 +1,42 @@
-import { Cart } from '../models/cart';
-import { CartItem } from '../models/cart-item';
-import { Product } from '../models/product';
-import { ShoppingState } from '../shopping.state';
-import { AddProductAction, RemoveAllItemsOfProductAction, RemoveProductAction } from './cart.actions';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
+import 'rxjs/add/operator/map';
+
+import { Cart } from '../models/cart';
+import { CartItem } from '../models/cart-item';
+import { Product } from '../models/product';
+import { ShoppingState } from '../shopping.state';
+import {
+  AddProductAction,
+  RemoveAllItemsOfProductAction,
+  RemoveProductAction,
+} from './cart.actions';
+
 @Injectable()
 export class CartService {
-
-  constructor(private store: Store<ShoppingState>) { }
+  constructor(private store: Store<ShoppingState>) {}
 
   public getItems(): Observable<CartItem[]> {
     return this.store
-      .select((s) => s.cart)
-      .map((cartState) => new Cart(cartState).getItems());
+      .select(s => s.cart)
+      .map(cartState => new Cart(cartState).getItems());
   }
   public getTotalAmount(): Observable<number> {
     return this.store
-      .select((s) => s.cart)
-      .map((cartState) => new Cart(cartState).getTotalAmount());
+      .select(s => s.cart)
+      .map(cartState => new Cart(cartState).getTotalAmount());
   }
   public getTotalCount(): Observable<number> {
     return this.store
-      .select((s) => s.cart)
-      .map((cartState) => new Cart(cartState).getTotalCount());
+      .select(s => s.cart)
+      .map(cartState => new Cart(cartState).getTotalCount());
   }
   public isEmpty(): Observable<boolean> {
     return this.store
-      .select((s) => s.cart)
-      .map((cartState) => new Cart(cartState).isEmpty());
+      .select(s => s.cart)
+      .map(cartState => new Cart(cartState).isEmpty());
   }
 
   public add(product: Product): void {

@@ -35,19 +35,20 @@ export class ProductEndpoint {
     let searchParams = new HttpParams();
     searchParams = searchParams.set('sortColumn', options.sortColumn);
     searchParams = searchParams.set('pageSize', options.pageSize.toString());
-    searchParams = searchParams.set('pageNumber', options.currentPage.toString());
+    searchParams = searchParams.set(
+      'pageNumber',
+      options.currentPage.toString()
+    );
     if (options.selectedProductCategories.length > 0) {
-      const categoryFilter = {
-        GroupOp: 1,
-        Conditions: options.selectedProductCategories.map(categoryId => {
-          return {
-            Field: 'productCategoryId',
-            Op: 'eq',
-            Data: categoryId,
-          };
-        }),
-      };
-      searchParams = searchParams.set('filters', JSON.stringify(categoryFilter));
+      searchParams = searchParams.set(
+        'categories',
+        options.selectedProductCategories.join(',')
+      );
+    } else {
+      searchParams = searchParams.set(
+        'categories',
+        [1, 2, 3, 4, 5, 6, 7].join(',')
+      );
     }
     return this.http.get<ProductsResponse>(`${environment.endpoint}/products`, {
       params: searchParams,
