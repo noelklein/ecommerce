@@ -1,7 +1,8 @@
+import { Action } from '@ngrx/store';
+
 import { Product } from '../models/product';
 import { CategoryFilter, ProductCategory } from '../models/product-category';
 import { ProductsResponse } from './product.responses';
-import { Action } from '@ngrx/store';
 
 export const ProductListActionType = {
   ChangePage: 'ProductListAction.ChangePage',
@@ -16,31 +17,31 @@ export const ProductListActionType = {
 
 export class ProductListOptionsChangedAction implements Action {
   public type = ProductListActionType.ProductListOptionsChanged;
-};
+}
 
 export class ChangePageAction implements Action {
   public type = ProductListActionType.ChangePage;
-  constructor(public payload: number) { }
+  constructor(public payload: number) {}
 }
 
 export class FilterByCategoryAction implements Action {
   public type = ProductListActionType.FilterByCategory;
-  constructor(public payload: CategoryFilter) { }
+  constructor(public payload: CategoryFilter) {}
 }
 
 export class ProductsRetrievedAction implements Action {
   public type = ProductListActionType.ProductsRetrieved;
-  constructor(public payload: ProductsResponse) { }
+  constructor(public payload: ProductsResponse) {}
 }
 
 export class RetrieveProductAction implements Action {
   public type = ProductListActionType.RetrieveProduct;
-  constructor(public payload: number) { }
+  constructor(public payload: number) {}
 }
 
 export class ProductRetrievedAction implements Action {
   public type = ProductListActionType.ProductRetrieved;
-  constructor(public payload: Product) { }
+  constructor(public payload: Product) {}
 }
 
 export class RetrieveCategoriesAction implements Action {
@@ -49,5 +50,5 @@ export class RetrieveCategoriesAction implements Action {
 
 export class CategoriesRetrievedAction implements Action {
   public type = ProductListActionType.CategoriesRetrieved;
-  constructor(public payload: ProductCategory[]) { }
+  constructor(public payload: ProductCategory[]) {}
 }
