@@ -1,32 +1,37 @@
-import { Address } from '../../customer/shared/models/address';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+
+import { Customer } from '../../customer/shared/models/customer';
 import { CheckoutService } from '../shared/checkout.service';
-import { Order } from '../shared/models/order';
-import { Component, OnInit } from '@angular/core';
+import { Address } from './address/address.component';
+
+export class OrderFormValues {
+  customer: Customer;
+  billingAddress: Address;
+  shippingAddress: Address;
+}
 
 @Component({
   selector: 'app-checkout',
-  templateUrl: './checkout.component.html'
+  templateUrl: './checkout.component.html',
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent {
+  private checkoutFormGroup: FormGroup;
 
-  public order: Order;
-  public orderIsProcessing: boolean;
-  public billingAddress: Address;
-  public shippingAddress: Address;
-
-  constructor(
-    private checkoutService: CheckoutService
-  ) { }
-
-  ngOnInit() {
-    this.order = new Order();
-    this.billingAddress = new Address();
-    this.shippingAddress = new Address();
-    this.orderIsProcessing = false;
+  constructor(private checkoutService: CheckoutService) {
+    this.checkoutFormGroup = new FormGroup({
+      customer: new FormGroup({
+        email: new FormControl(),
+        firstName: new FormControl(),
+        lastName: new FormControl(),
+        phoneNumber: new FormControl(),
+      }),
+      billingAddress: new FormControl(),
+      shippingAddress: new FormControl(),
+    });
   }
 
-  public checkout() {
-    this.checkoutService.placeOrder(this.order);
+  public onFormSubmitted() {
+    console.log(this.checkoutFormGroup.value);
   }
-
 }

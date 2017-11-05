@@ -15,7 +15,7 @@ export class CustomerEndpoint {
     return this.http
       .get(`${environment.endpoint}/customers`)
       .switchMap((response) => response.json() as Customer[])
-      .find((customer) => customer.Email === email);
+      .find((customer) => customer.email === email);
   }
 
   public createCustomer(customer: Customer): Observable<Customer> {

@@ -13,10 +13,10 @@ export class CheckoutEndpoint {
   public saveOrder(order: Order): Observable<Order> {
     const newOrder = {
       CustomerId: order.customer.customerId,
-      Email: order.customer.Email,
-      FirstName: order.customer.FirstName,
-      LastName: order.customer.LastName,
-      PhoneNumber: order.customer.PhoneNumber,
+      Email: order.customer.email,
+      FirstName: order.customer.firstName,
+      LastName: order.customer.lastName,
+      PhoneNumber: order.customer.phoneNumber,
       OrderDate: new Date(),
       LastModifiedDate: new Date(),
       OrderDetails: order.orderDetails
