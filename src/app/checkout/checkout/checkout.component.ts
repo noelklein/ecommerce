@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -26,9 +27,16 @@ export class CheckoutComponent {
         lastName: new FormControl(),
         phoneNumber: new FormControl(),
       }),
-      billingAddress: new FormControl(),
+      billingAddress: new FormControl({ addressLine1: 'asdf' }),
       shippingAddress: new FormControl(),
     });
+    Observable.timer(2000)
+      .take(1)
+      .subscribe(() =>
+        this.checkoutFormGroup.patchValue({
+          billingAddress: { addressLine1: 'test2' },
+        })
+      );
   }
 
   public onFormSubmitted() {

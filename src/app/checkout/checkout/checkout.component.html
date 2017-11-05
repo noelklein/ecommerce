@@ -46,6 +46,9 @@
 					<hr />
 					<div class="form-horizontal" role="form">
 						<app-address formControlName="shippingAddress"></app-address>
+						<div ngxErrors="shippingAddress" ngxError="address" when="dirty">
+							Shipping address is invalid
+						</div>
 					</div>
 				</div>
 			</div>
