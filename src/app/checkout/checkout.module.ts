@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
+import { NgxErrorsModule } from '@ultimate/ngxerrors';
 
 import { CustomerModule } from '../customer/customer.module';
 import { AddressComponent } from './checkout/address/address.component';
@@ -19,6 +20,7 @@ import { CheckoutService } from './shared/checkout.service';
     CustomerModule,
     HttpModule,
     ReactiveFormsModule,
+    NgxErrorsModule,
     EffectsModule.forFeature([CheckoutEffects]),
     RouterModule.forChild([
       {

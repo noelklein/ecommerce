@@ -23,8 +23,8 @@
     <label for="zip_{{uniqueId}}" class="col-sm-2 control-label">Zip:</label>
     <div class="col-sm-2">
       <input type="text" class="form-control" id="zip_{{uniqueId}}" placeholder="Zip" name="PostalCode" formControlName="postalCode">
-      <div *ngIf="isPostalCodeValidationErrorVisible">
-        Postal code is invalid
+      <div ngxErrors="postalCode" ngxError="required" when="dirty">
+        Postal code is required
       </div>
     </div>
   </div>
