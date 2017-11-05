@@ -86,12 +86,4 @@ export class AddressComponent implements ControlValueAccessor, Validator {
       address: 'Address is invalid',
     };
   }
-
-  public get isPostalCodeValidationErrorVisible() {
-    const postalCodeControl = this.addressFormGroup.get('postalCode');
-    return (
-      postalCodeControl.invalid &&
-      (postalCodeControl.dirty || postalCodeControl.touched)
-    );
-  }
 }
